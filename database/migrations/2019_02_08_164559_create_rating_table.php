@@ -23,6 +23,8 @@ class CreateRatingTable extends Migration
             $table->integer("uid");
             $table->foreign("uid")->references("id")->on("users");
             $table->primary(["mid","uid"]);
+            $table->enum("rating",array(1,2,3,4,5));
+            $table->text("comment");
             $table->timestamps();
         });
     }
