@@ -40,6 +40,7 @@ class CatalogController extends Controller
         $movie->director = $request->input('director');
         $movie->poster = $request->input('poster');
         $movie->synopsis = $request->input('synopsis');
+        $movie->tid= 1;
         $movie->rented = 0;
         $movie->save();
         Notification::success('Pelicula creada');
