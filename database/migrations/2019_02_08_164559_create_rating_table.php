@@ -18,9 +18,9 @@ class CreateRatingTable extends Migration
     public function up()
     {
         Schema::create('rating', function (Blueprint $table) {
-            $table->integer("mid");
-            $table->foreign("mid")->references("id")->on("movie");
-            $table->integer("uid");
+            $table->integer("mid")->unsigned();
+            $table->foreign("mid")->references("id")->on("movies");
+            $table->integer("uid")->unsigned();
             $table->foreign("uid")->references("id")->on("users");
             $table->primary(["mid","uid"]);
             $table->enum("rating",array(1,2,3,4,5));
