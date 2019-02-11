@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 use Notification;
 
 use Illuminate\Http\Request;
-use App\Movie;
+use App\Tarifa;
 
-class CatalogController extends Controller
+class TarifasController extends Controller
 {
     
     
