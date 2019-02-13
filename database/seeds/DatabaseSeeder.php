@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Movie;
 use App\User;
+use App\Tarifa;
     
 class DatabaseSeeder extends Seeder
 {
@@ -42,11 +43,25 @@ class DatabaseSeeder extends Seeder
         $s->password = bcrypt('cahlo');
         $s->save();
     }
+    private function seedTarifas()
+    {
+        DB::table('tarifas')->delete();
+        
+        $t = new Tarifa;
+        $t->tipus ='viejas';
+        $t->preu = 3;
+        $t->save();
+        
+        
+    }
     public function run()
     {
      // self::seedCatalog();
      // $this->command->info('Tabla catálogo inicializada con datos!');
       self::seedUsers();
+      self::seedTarifas();
       $this->command->info('Tabla usuarios inicializada con datos!');
     }
+
+    
 }

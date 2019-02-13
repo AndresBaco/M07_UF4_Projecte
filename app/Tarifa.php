@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tarifa extends Model
 {
-    //
+    protected $table='tarifas';
 }

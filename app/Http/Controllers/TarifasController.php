@@ -17,7 +17,7 @@ class TarifasController extends Controller
     }
     
     public function getShow($id){
-         $tarifas= Tarifa::findOrFail($id);
+         $tarifa= Tarifa::findOrFail($id);
          return view('tarifas.show', array('tarifa' => $tarifa));
  
     }

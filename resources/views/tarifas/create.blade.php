@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <label for="preu">Precio de la Tarifa: </label>
-                <input type="text" name="preu" id="preu" class="form-control">
+                <input type="number" name="preu" id="preu" class="form-control">
             </div>
 
             <div class="form-group text-center">

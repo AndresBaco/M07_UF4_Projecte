@@ -18,6 +18,7 @@ Route::get('/login', function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
+
     //movies
     Route::get('/catalog', 'CatalogController@getIndex');
     Route::get('/catalog/show/{id}', 'CatalogController@getShow');
@@ -34,10 +35,11 @@ Route::group(['middleware' => 'auth'], function(){
 
     //tarifas
     Route::get('/tarifas', 'TarifasController@getIndex');
-    Route::get('/catalog/tarifas/{id}', 'TarifasController@getShow');
 
     Route::get('/tarifas/create', 'TarifasController@getCreate');
     Route::post('/tarifas/create', 'TarifasController@postCreate');
+
+    Route::get('/tarifas/show/{id}', 'TarifasController@getShow');
 
     Route::get('/tarifas/edit/{id}', 'TarifasController@getEdit');
     Route::put('/tarifas/edit/{id}', 'TarifasController@putEdit');
