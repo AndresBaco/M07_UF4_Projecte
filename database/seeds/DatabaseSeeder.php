@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Movie;
 use App\User;
+use App\Rating;
     
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +28,20 @@ class DatabaseSeeder extends Seeder
         }
         
     }
+
+    private function seedRating()
+    {
+        DB::table('rating')->delete();
+        
+        $p = new Rating;
+        $p->mid = 1;
+        $p->uid = 1;
+        $p->comment = "sfgdsfgdf dfg";
+
+        $p->save();
+        
+        
+    }
     
     private function seedUsers(){
        DB::table('users')->delete(); 
@@ -47,6 +62,7 @@ class DatabaseSeeder extends Seeder
      // self::seedCatalog();
      // $this->command->info('Tabla catálogo inicializada con datos!');
       self::seedUsers();
+      //self::seedRating();
       $this->command->info('Tabla usuarios inicializada con datos!');
     }
 }

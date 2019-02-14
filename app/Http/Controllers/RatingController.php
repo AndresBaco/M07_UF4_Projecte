@@ -4,18 +4,10 @@ namespace App\Http\Controllers;
 use Notification;
 
 use Illuminate\Http\Request;
-use App\Tarifa;
+use App\Rating;
 
-class CatalogController extends Controller
-{
-    
-    
-    public function getIndex(){
-        $tarifas= Tarifa::all();
-        return view('tarifas.index', array('arrayTarifas' => $tarifas));
-        
-    }
-    
+class RatingController extends Controller
+{    
     public function getShow($id){
          $tarifas= Tarifa::findOrFail($id);
          return view('tarifas.show', array('tarifa' => $tarifa));
@@ -33,13 +25,15 @@ class CatalogController extends Controller
 
     }
     
-    public function postCreate(Request $request){
-        $tarifa = new Tarifa;
-        $tarifa->tipus = $request->input('tipus');
-        $tarifa->preu = $request->input('preu');
-        $tarifa->save();
-        Notification::success('Tarifa creada');
-        return redirect('/tarifas');
+    public function postCreate(Request $request, $id){
+        $rating = new Rating;
+        $rating->mid=$id;
+        $rating->uid='1';
+        $rating->rating = 5;
+        $rating->comment = $request->input('comentari');
+        $rating->save();
+        Notification::success('Tu voto se ha enviado.');
+        return redirect('/catalog/show/'. $id);
     }
     public function putEdit(Request $request, $id){
         $tarifa = Tarifa::findOrFail($id);
