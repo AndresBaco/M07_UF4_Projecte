@@ -15,7 +15,7 @@ class AddTidToMoviesTable extends Migration
     {
         Schema::table('movies', function (Blueprint $table) {
             $table->integer('tid')->unsigned();
-            $table->foreign('tid')->references('tid')->on('tarifas');
+            $table->foreign('tid')->references('id')->on('tarifas');
         });
        
 

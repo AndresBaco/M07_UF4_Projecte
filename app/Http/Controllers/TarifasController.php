@@ -6,7 +6,7 @@ use Notification;
 use Illuminate\Http\Request;
 use App\Tarifa;
 
-class CatalogController extends Controller
+class TarifasController extends Controller
 {
     
     
@@ -17,7 +17,7 @@ class CatalogController extends Controller
     }
     
     public function getShow($id){
-         $tarifas= Tarifa::findOrFail($id);
+         $tarifa= Tarifa::findOrFail($id);
          return view('tarifas.show', array('tarifa' => $tarifa));
  
     }
