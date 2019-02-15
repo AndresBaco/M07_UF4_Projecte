@@ -5,6 +5,7 @@ use Notification;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Tarifa;
 
 class CatalogController extends Controller
 {
@@ -23,7 +24,8 @@ class CatalogController extends Controller
     }
     
     public function getCreate(){
-        return view('catalog.create');
+        $tarifas= Tarifa::all();
+        return view('catalog.create', array('arrayTarifas' => $tarifas));
 
     }
     
