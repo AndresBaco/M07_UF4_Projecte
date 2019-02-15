@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="row">
 
@@ -40,6 +41,9 @@
             
            
         @endif
+
+
+
              <a href="{{ url('/catalog/edit/' . $pelicula->id) }}" class="btn btn-warning"> Editar</a>
 
             <form action="{{action('CatalogController@deleteMovie', $pelicula->id)}}" 
@@ -54,6 +58,24 @@
             <a href="{{ url('/catalog') }}" class="btn btn-secondary"> Volver al listado</a>
 
 
+            <form action="{{url('/rating/vote/' . $pelicula->id)}}"
+            method="POST" style="display:inline">
+            {{ csrf_field() }}
+            
+            <h3>Valoración: </h3><br>
+            <input type="radio" name="rating" value="1" checked> <span class="fa fa-star checked"></span><br>
+              <input type="radio" name="rating" value="2"> <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><br>
+              <input type="radio" name="rating" value="3"> <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><br>
+              <input type="radio" name="rating" value="4"> <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><br>
+              <input type="radio" name="rating" value="5"> <span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><br>
+
+              <h3>Comentarios</h3><br>
+              <textarea  name="comentari" placeholder="Di lo que piensas"></textarea>
+
+              <button type="submit" class="btn btn-primary" style="display:inline">
+                Enviar voto/comentario
+            </button>
+              </form>
     </div>
 </div>
 

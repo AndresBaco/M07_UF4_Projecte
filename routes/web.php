@@ -32,7 +32,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/catalog/rent/{id}', 'CatalogController@putRent');
     Route::put('/catalog/return/{id}', 'CatalogController@putReturn');
     Route::delete('/catalog/delete/{id}', 'CatalogController@deleteMovie');
-
+    //Rating
+    Route::post('/rating/vote/{id}', 'RatingController@postCreate');
     //tarifas
     Route::get('/tarifas', 'TarifasController@getIndex');
 

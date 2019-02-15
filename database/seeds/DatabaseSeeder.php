@@ -3,6 +3,9 @@
 use Illuminate\Database\Seeder;
 use App\Movie;
 use App\User;
+
+use App\Rating;
+
 use App\Tarifa;
     
 class DatabaseSeeder extends Seeder
@@ -26,6 +29,20 @@ class DatabaseSeeder extends Seeder
         $p->synopsis = $pelicula['synopsis'];
         $p->save();
         }
+        
+    }
+
+    private function seedRating()
+    {
+        DB::table('rating')->delete();
+        
+        $p = new Rating;
+        $p->mid = 1;
+        $p->uid = 1;
+        $p->comment = "sfgdsfgdf dfg";
+
+        $p->save();
+        
         
     }
     
@@ -59,7 +76,10 @@ class DatabaseSeeder extends Seeder
      // self::seedCatalog();
      // $this->command->info('Tabla catálogo inicializada con datos!');
       self::seedUsers();
-      self::seedTarifas();
+      //self::seedRating();
+
+      //self::seedTarifas();
+
       $this->command->info('Tabla usuarios inicializada con datos!');
     }
 
