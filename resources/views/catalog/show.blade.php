@@ -6,7 +6,7 @@
 <div class="row">
 
     <div class="col-sm-4">
-        <img src="{{$pelicula->poster}}">   
+        <img src="{{$pelicula->poster}}" style="width:350px">   
 
     </div>
     <div class="col-sm-8">
