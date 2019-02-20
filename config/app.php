@@ -165,6 +165,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Krucas\Notification\NotificationServiceProvider::class,
+        
 
         /*
          * Package Service Providers...
