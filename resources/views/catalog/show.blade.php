@@ -76,11 +76,7 @@
                 Enviar voto/comentario
             </button>
 
-                
-            </form>
-            @foreach( $nombres as $names )
-            <h4>{{$names->name}}</h4>
-            @endforeach
+
             @foreach( $arrayRatings as $rating )
             
             <h4>{{$rating->rating}}</h4>

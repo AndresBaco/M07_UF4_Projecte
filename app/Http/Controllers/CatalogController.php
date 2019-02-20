@@ -22,16 +22,24 @@ class CatalogController extends Controller
     public function getShow($id){
         
          $ratings = Rating::where('mid', $id)->get();
-         $nomsUsers = array();
-         foreach ($ratings as $value) {
-             $user = User::findOrFail($value->uid);    
-             $nomsUsers[] = $user->name;
-         }
          
          $movie= Movie::findOrFail($id);
-         return view('catalog.show', array('pelicula' => $movie), array('arrayRatings' => $ratings),array('nombres'=>$nomsUsers));
+         return view('catalog.show', array('pelicula' => $movie), array('arrayRatings' => $ratings));
  
     }
+    // public function getShow($id){
+        
+    //      $ratings = Rating::where('mid', $id)->get();
+    //      $nomsUsers = array();
+    //      foreach ($ratings as $value) {
+    //          $user = User::findOrFail($value->uid);    
+    //          $nomsUsers[] = $user->name;
+    //      }
+         
+    //      $movie= Movie::findOrFail($id);
+    //      return view('catalog.show', array('pelicula' => $movie), array('arrayRatings' => $ratings),array('nombres'=>$nomsUsers));
+ 
+    // }
     
     public function getCreate(){
         $tarifas= Tarifa::all();
