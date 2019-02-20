@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    //protected $primaryKey = ['mid', 'uid'];
+	use HasCompositeKey;
+    protected $primaryKey = ['mid', 'uid'];
 }

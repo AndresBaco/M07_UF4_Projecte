@@ -5,6 +5,8 @@ use Notification;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Rating;
+use App\User;
 use App\Tarifa;
 
 class CatalogController extends Controller
@@ -18,8 +20,16 @@ class CatalogController extends Controller
     }
     
     public function getShow($id){
+        
+         $ratings = Rating::where('mid', $id)->get();
+         $nomsUsers = array();
+         foreach ($ratings as $value) {
+             $user = User::findOrFail($value->uid);    
+             $nomsUsers[] = $user->name;
+         }
+         
          $movie= Movie::findOrFail($id);
-         return view('catalog.show', array('pelicula' => $movie));
+         return view('catalog.show', array('pelicula' => $movie), array('arrayRatings' => $ratings),array('nombres'=>$nomsUsers));
  
     }
     

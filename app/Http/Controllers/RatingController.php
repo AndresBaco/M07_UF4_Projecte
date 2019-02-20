@@ -5,6 +5,8 @@ use Notification;
 
 use Illuminate\Http\Request;
 use App\Rating;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {    
@@ -28,8 +30,8 @@ class RatingController extends Controller
     public function postCreate(Request $request, $id){
         $rating = new Rating;
         $rating->mid=$id;
-        $rating->uid='1';
-        $rating->rating = 5;
+        $rating->uid=Auth::user()->id;
+        $rating->rating = $request->input('rating');
         $rating->comment = $request->input('comentari');
         $rating->save();
         Notification::success('Tu voto se ha enviado.');
