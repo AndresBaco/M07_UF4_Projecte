@@ -8,7 +8,7 @@
                 <div class="panel-heading">Login</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    <form class="form-horizontal" method="POST" action="#">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -51,8 +51,14 @@
                         
                         {!! NoCaptcha::renderJs() !!}
                         {!! NoCaptcha::display() !!}
+                        @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
+
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>

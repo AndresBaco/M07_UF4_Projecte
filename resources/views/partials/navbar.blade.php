@@ -25,6 +25,10 @@
                             Lista de tarifas
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ url('/catalog/export/') }}" class="btn btn-secondary"> Exportar a excel </a>
+                    </li>
+
                 </ul>
 
                 <ul class="navbar-nav navbar-right">

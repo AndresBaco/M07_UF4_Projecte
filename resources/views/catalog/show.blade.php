@@ -57,7 +57,6 @@
             
             <a href="{{ url('/catalog') }}" class="btn btn-secondary"> Volver al listado</a>
 
-
             <form action="{{url('/rating/vote/' . $pelicula->id)}}"
             method="POST" style="display:inline">
             {{ csrf_field() }}

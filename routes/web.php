@@ -32,6 +32,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/catalog/rent/{id}', 'CatalogController@putRent');
     Route::put('/catalog/return/{id}', 'CatalogController@putReturn');
     Route::delete('/catalog/delete/{id}', 'CatalogController@deleteMovie');
+
+    Route::get('/catalog/export/', 'CatalogController@getExcel');
+
     //Rating
     Route::post('/rating/vote/{id}', 'RatingController@postCreate');
     //tarifas
@@ -46,6 +49,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/tarifas/edit/{id}', 'TarifasController@putEdit');
 
     Route::delete('/tarifas/delete/{id}', 'TarifasController@deleteTarifa');
+
+
 });
 Auth::routes();
 

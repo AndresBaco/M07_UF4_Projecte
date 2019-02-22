@@ -8,6 +8,10 @@ use App\Movie;
 use App\Rating;
 use App\User;
 use App\Tarifa;
+use App\Exports\MoviesExport;
+//use App\Exports\Movie;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 class CatalogController extends Controller
 {
@@ -40,7 +44,9 @@ class CatalogController extends Controller
     //      return view('catalog.show', array('pelicula' => $movie), array('arrayRatings' => $ratings),array('nombres'=>$nomsUsers));
  
     // }
-    
+    public function getExcel(){
+        return Excel::download(new MoviesExport, 'Peliculas.xlsx');
+    }
     public function getCreate(){
         $tarifas= Tarifa::all();
         return view('catalog.create', array('arrayTarifas' => $tarifas));
