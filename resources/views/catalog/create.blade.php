@@ -38,8 +38,21 @@
                <textarea name="synopsis" id="synopsis" class="form-control" rows="3"></textarea>
             </div>
 
+            <div class="form-group">
+                <label for="idioma">Idioma</label><br />
+                <select name="idioma" id="idioma" class="form-control" rows="3">
+
+                 @foreach( $arrayIdiomas as $idioma )
+
+                 <option > {{$idioma->idioma}}</option>
+
+                 @endforeach
+                </select>
+            </div>
+
+
              <div class="form-group">
-               <label for="tid">Resumen</label>
+               <label for="tid">Tarifa</label>
                <select name="tid" id="tid" class="form-control" rows="3">
 
                  @foreach( $arrayTarifas as $tarifa )
