@@ -5,7 +5,7 @@ use App\Movie;
 use App\User;
 
 use App\Rating;
-
+use App\Idioma;
 use App\Tarifa;
     
 class DatabaseSeeder extends Seeder
@@ -45,7 +45,21 @@ class DatabaseSeeder extends Seeder
         
         
     }
-    
+    private function seedIdiomas()
+    {
+        $p = new Idioma;
+        $p->idioma = 'Español';
+        $p->save();
+
+        $s = new Idioma;
+        $s->idioma = 'Catalan';
+        $s->save();
+
+        $d = new Idioma;
+        $d->idioma = 'Inglés';
+        $d->save();
+    }
+
     private function seedUsers(){
        DB::table('users')->delete(); 
         $p = new User;
@@ -76,7 +90,7 @@ class DatabaseSeeder extends Seeder
       self::seedCatalog();
       $this->command->info('Tabla catálogo inicializada con datos!');
       self::seedUsers();
-      //self::seedRating();
+      self::seedIdiomas();
 
       //self::seedTarifas();
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Movie;
 use App\Rating;
 use App\User;
+use App\Idioma;
 use App\Tarifa;
 use App\Exports\MoviesExport;
 //use App\Exports\Movie;
@@ -56,14 +57,17 @@ class CatalogController extends Controller
         return Excel::download(new MoviesExport, 'Peliculas.xlsx');
     }
     public function getCreate(){
+        $idiomas = Idioma::all();
         $tarifas= Tarifa::all();
-        return view('catalog.create', array('arrayTarifas' => $tarifas));
+        return view('catalog.create', array('arrayTarifas' => $tarifas), array('arrayIdiomas' => $idiomas));
 
     }
     
     public function getEdit($id){
         $movie= Movie::findOrFail($id);
-        return view('catalog.edit', array('pelicula'=>$movie));
+        $tarifa= Tarifa::all();
+        $idioma= Idioma::all();
+        return view('catalog.edit', compact('movie', 'tarifa', 'idioma'));
 
     }
     
@@ -74,8 +78,16 @@ class CatalogController extends Controller
         $movie->director = $request->input('director');
         $movie->poster = $request->input('poster');
         $movie->synopsis = $request->input('synopsis');
-        $movie->tid= 1;
+
+        $tarifainput= $request->input('tid');
+        $tarifa = Tarifa::where('tipus', $tarifainput)->firstOrFail();
+        $movie->tid= $tarifa->id;
+
         $movie->rented = 0;
+
+        $idioma = Idioma::where('idioma', $request->input('idioma'))->firstOrFail();
+        $movie->idiomaid =  $idioma->id; 
+
         $movie->save();
         Notification::success('Pelicula creada');
         return redirect('/catalog');
