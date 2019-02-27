@@ -25,11 +25,19 @@ class CatalogController extends Controller
     }
     
     public function getShow($id){
-        
-         $ratings = Rating::where('mid', $id)->get();
          
+         $ratings = Rating::where('mid', $id)->get();
+         $user = User::where('id',1)->get();
          $movie= Movie::findOrFail($id);
-         return view('catalog.show', array('pelicula' => $movie), array('arrayRatings' => $ratings));
+         $users = array();
+          foreach ($ratings as $value) {
+              $user = User::findOrFail($value->uid);    
+              //echo $user["name"];
+              $users[] = [$user->name, $value->rating, $value->comment];
+          }
+          //dd($users);
+         //dd($users);
+         return view('catalog.show', compact('movie','users','comment'));
  
     }
     // public function getShow($id){

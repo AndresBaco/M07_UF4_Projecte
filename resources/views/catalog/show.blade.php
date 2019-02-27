@@ -1,25 +1,26 @@
 @extends('layouts.master')
 
 @section('content')
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="row">
 
     <div class="col-sm-4">
-        <img src="{{$pelicula->poster}}" style="width:350px">   
+        <img src="{{$movie->poster}}" style="width:350px">   
 
     </div>
     <div class="col-sm-8">
-        <h1>{{ $pelicula->title}}</h1>
-        <h3>Año: {{$pelicula->year}}</h3>
+        <h1>{{ $movie->title}}</h1>
+        <h3>Año: {{$movie->year}}</h3>
         {{-- TODO: Datos de la película --}}
-        <h3>Director: {{$pelicula->director}}</h3>
-        <p><strong>Resumen: </strong> {{$pelicula->synopsis}}</p> <br><br>
+        <h3>Director: {{$movie->director}}</h3>
+        <p><strong>Resumen: </strong> {{$movie->synopsis}}</p> <br><br>
         <p><strong>Estado: </strong> 
         
-        @if ($pelicula->rented == true)
+        @if ($movie->rented == true)
             Película disponible 
-            <form action="{{action('CatalogController@putRent', $pelicula->id)}}" 
+            <form action="{{action('CatalogController@putRent', $movie->id)}}" 
             method="POST" style="display:inline">
             {{ method_field('PUT') }}
             {{ csrf_field() }}
@@ -30,7 +31,7 @@
              
         @else
             Pelicula alquilada
-            <form action="{{action('CatalogController@putReturn', $pelicula->id)}}" 
+            <form action="{{action('CatalogController@putReturn', $movie->id)}}" 
             method="POST" style="display:inline">
             {{ method_field('PUT') }}
             {{ csrf_field() }}
@@ -44,9 +45,9 @@
 
 
 
-             <a href="{{ url('/catalog/edit/' . $pelicula->id) }}" class="btn btn-warning"> Editar</a>
+             <a href="{{ url('/catalog/edit/' . $movie->id) }}" class="btn btn-warning"> Editar</a>
 
-            <form action="{{action('CatalogController@deleteMovie', $pelicula->id)}}" 
+            <form action="{{action('CatalogController@deleteMovie', $movie->id)}}" 
             method="POST" style="display:inline">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
@@ -57,7 +58,7 @@
             
             <a href="{{ url('/catalog') }}" class="btn btn-secondary"> Volver al listado</a>
 
-            <form action="{{url('/rating/vote/' . $pelicula->id)}}"
+            <form action="{{url('/rating/vote/' . $movie->id)}}"
             method="POST" style="display:inline">
             {{ csrf_field() }}
             
@@ -75,12 +76,13 @@
                 Enviar voto/comentario
             </button>
 
-
-            @foreach( $arrayRatings as $rating )
-            
-            <h4>{{$rating->rating}}</h4>
-            <p> {{$rating->comment}}</p>
+            @foreach( $users as $user )
+            <h4>{{$user[0]}}</h4>
+            <h6>Nota: {{$user[1]}}</h6>
+            <p>{{$user[2]}}</p>
             @endforeach
+            
+            
             
     </div>
 </div>
