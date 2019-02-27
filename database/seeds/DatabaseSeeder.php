@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 
     private function seedRating()
     {
-        DB::table('rating')->delete();
+        
         
         $p = new Rating;
         $p->mid = 1;
@@ -58,6 +58,7 @@ class DatabaseSeeder extends Seeder
         $d = new Idioma;
         $d->idioma = 'Inglés';
         $d->save();
+
     }
 
     private function seedUsers(){
@@ -76,7 +77,6 @@ class DatabaseSeeder extends Seeder
     }
     private function seedTarifas()
     {
-        DB::table('tarifas')->delete();
         
         $t = new Tarifa;
         $t->tipus ='viejas';
@@ -87,15 +87,17 @@ class DatabaseSeeder extends Seeder
     }
     public function run()
     {
-      self::seedCatalog();
-      $this->command->info('Tabla catálogo inicializada con datos!');
+      //self::seedCatalog();
+      //$this->command->info('Tabla catálogo inicializada con datos!');
       self::seedUsers();
       self::seedIdiomas();
 
       //self::seedTarifas();
 
       $this->command->info('Tabla usuarios inicializada con datos!');
+      $this->command->info('Tabla idiomas inicializada con datos!');
     }
+    
 
     private $arrayPeliculas = array(
         array(
