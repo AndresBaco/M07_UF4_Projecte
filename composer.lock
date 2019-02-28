@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "afffbad8b48518ece528ab3b14e6296c",
+    "content-hash": "d9443af41cfda539209513712ae42732",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -758,6 +758,50 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
+        },
+        {
+            "name": "in-the-beam/laravel-email-confirmation",
+            "version": "0.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/in-the-beam/laravel-email-confirmation.git",
+                "reference": "5987e5a77517acb5d1eef446eaf3f7a135b7731b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/in-the-beam/laravel-email-confirmation/zipball/5987e5a77517acb5d1eef446eaf3f7a135b7731b",
+                "reference": "5987e5a77517acb5d1eef446eaf3f7a135b7731b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ITB\\LEC\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stanislav Kabin",
+                    "email": "me@h-zone.ru"
+                }
+            ],
+            "description": "E-Mail confirmation when registering",
+            "homepage": "https://gitlab.com/in-the-beam/laravel-email-confirmation",
+            "keywords": [
+                "confirm email",
+                "confirmation email",
+                "in-the-beam",
+                "itb",
+                "laravel",
+                "laravel email",
+                "validate email",
+                "validation email"
+            ],
+            "time": "2017-07-25T06:47:08+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

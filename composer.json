@@ -11,6 +11,7 @@
         "cybercog/laravel-love": "^5.2",
         "edvinaskrucas/notification": "5.*",
         "fideloper/proxy": "~3.3",
+        "in-the-beam/laravel-email-confirmation": "^0.3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "maatwebsite/excel": "^3.1",
