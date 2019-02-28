@@ -77,10 +77,26 @@
               <button type="submit" class="btn btn-primary" style="display:inline">
                 Enviar voto/comentario
             </button>
+            </form>
+            @if($commentExists)           
+                <form action="{{url('/rating/delete/' . $movie->id)}}" 
+                method="POST" style="display:inline">
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+                <button  type="submit" class="btn btn-danger" style="display:inline">
+                        Eliminar comentario
+                </button>
+                </form>
+            @endif
 
             @foreach( $users as $user )
-            <h4>{{$user[0]}}</h4>
-            <h6>Nota: {{$user[1]}}</h6>
+                <h4>{{$user[0]}}</h4>
+                <h6>Nota: {{$user[1]}}</h6>
+
+            @for ($i=1;$i<=$user[1];$i++)
+                <span style="color:pink;" class="fa fa-star checked"></span>
+            @endfor
+
             <p>{{$user[2]}}</p>
             @endforeach
             

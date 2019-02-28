@@ -31,6 +31,13 @@ class RatingController extends Controller
         $rating = new Rating;
         $rating->mid=$id;
         $rating->uid=Auth::user()->id;
+        $consultaRepe = Rating::where('uid', Auth::user()->id)->where('mid',$id)->get();
+
+        if (sizeof($consultaRepe)!=0){
+            Notification::error('Ya has comentado.');
+            return redirect('/catalog/show/'. $id);
+        }
+
         $rating->rating = $request->input('rating');
         $rating->comment = $request->input('comentari');
         $rating->save();
@@ -52,6 +59,12 @@ class RatingController extends Controller
         $tarifa->delete();
         Notification::success('Tarifa borrada');
         return redirect('/tarifas');
+    }
+    public function ratingDelete($id){
+        $rating = Rating::where('uid', Auth::user()->id)->where('mid',$id)->get();
+        $rating->delete();
+        Notification::success('Comentario eliminado');
+        return redirect('/tarifas/show/'. $id);
     }
     
 }
