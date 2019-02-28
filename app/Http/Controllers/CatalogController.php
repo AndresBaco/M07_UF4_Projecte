@@ -27,8 +27,15 @@ class CatalogController extends Controller
     public function getShow($id){
          
          $ratings = Rating::where('mid', $id)->get();
+
+
          $user = User::where('id',1)->get();
          $movie= Movie::findOrFail($id);
+
+         $tarifa = Tarifa::where('id', $movie->tid)->firstOrFail();
+         $idioma = Idioma::where('id', $movie->idiomaid)->firstOrFail();
+
+
          $users = array();
           foreach ($ratings as $value) {
               $user = User::findOrFail($value->uid);    
@@ -37,7 +44,7 @@ class CatalogController extends Controller
           }
           //dd($users);
          //dd($users);
-         return view('catalog.show', compact('movie','users','comment'));
+         return view('catalog.show', compact('movie','users','comment','tarifa','idioma'));
  
     }
     // public function getShow($id){

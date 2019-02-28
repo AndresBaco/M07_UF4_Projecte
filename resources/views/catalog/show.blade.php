@@ -15,7 +15,9 @@
         <h3>Año: {{$movie->year}}</h3>
         {{-- TODO: Datos de la película --}}
         <h3>Director: {{$movie->director}}</h3>
-        <p><strong>Resumen: </strong> {{$movie->synopsis}}</p> <br><br>
+        <p><strong>Resumen: </strong> {{$movie->synopsis}}</p>
+        <p><strong>Tarifa: </strong> {{$tarifa->tipus}}</p> 
+        <p><strong>Idioma: </strong> {{$idioma->idioma}}</p> 
         <p><strong>Estado: </strong> 
         
         @if ($movie->rented == true)
