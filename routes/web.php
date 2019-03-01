@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Rating
     Route::post('/rating/vote/{id}', 'RatingController@postCreate');
+    Route::delete('/rating/delete/{id}', 'RatingController@ratingDelete');
     //tarifas
     Route::get('/tarifas', 'TarifasController@getIndex');
 

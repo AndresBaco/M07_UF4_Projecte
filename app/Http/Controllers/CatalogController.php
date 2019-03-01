@@ -13,6 +13,7 @@ use App\Exports\MoviesExport;
 //use App\Exports\Movie;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CatalogController extends Controller
 {
@@ -31,7 +32,7 @@ class CatalogController extends Controller
 
          $user = User::where('id',1)->get();
          $movie= Movie::findOrFail($id);
-
+         $commentExists = false;
          $tarifa = Tarifa::where('id', $movie->tid)->firstOrFail();
          $idioma = Idioma::where('id', $movie->idiomaid)->firstOrFail();
 
@@ -42,9 +43,14 @@ class CatalogController extends Controller
               //echo $user["name"];
               $users[] = [$user->name, $value->rating, $value->comment];
           }
+          $consultaRepe = Rating::where('uid', Auth::user()->id)->where('mid',$id)->get();
+          
+          if (sizeof($consultaRepe)!=0){
+            $commentExists = true;
+            }
           //dd($users);
          //dd($users);
-         return view('catalog.show', compact('movie','users','comment','tarifa','idioma'));
+         return view('catalog.show', compact('movie','users','comment','tarifa','idioma','commentExists'));
  
     }
     // public function getShow($id){
