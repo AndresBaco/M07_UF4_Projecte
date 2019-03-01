@@ -46,12 +46,5 @@ class RatingController extends Controller
         return redirect('/tarifas/show/'. $id);
         
     }
-        
-    public function deleteTarifa($id){
-        $tarifa = Tarifa::findOrFail($id);
-        $tarifa->delete();
-        Notification::success('Tarifa borrada');
-        return redirect('/tarifas');
-    }
     
 }
