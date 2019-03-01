@@ -53,18 +53,14 @@ class RatingController extends Controller
         return redirect('/tarifas/show/'. $id);
         
     }
-        
-    public function deleteTarifa($id){
-        $tarifa = Tarifa::findOrFail($id);
-        $tarifa->delete();
-        Notification::success('Tarifa borrada');
-        return redirect('/tarifas');
-    }
+
     public function ratingDelete($id){
+
         $rating = Rating::where('uid', Auth::user()->id)->where('mid',$id)->get();
-        $rating->delete();
+        //el where anterior va a devolver un solo resultado, así que nos sirve utilizar la posición cero de rating
+        $rating[0]->delete();
         Notification::success('Comentario eliminado');
-        return redirect('/tarifas/show/'. $id);
+        return redirect('/catalog/show/'. $id);
     }
     
 }
