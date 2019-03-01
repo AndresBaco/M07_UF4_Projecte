@@ -54,6 +54,7 @@ class RatingController extends Controller
         
     }
 
+
     public function ratingDelete($id){
 
         $rating = Rating::where('uid', Auth::user()->id)->where('mid',$id)->get();
@@ -61,6 +62,5 @@ class RatingController extends Controller
         $rating[0]->delete();
         Notification::success('Comentario eliminado');
         return redirect('/catalog/show/'. $id);
-    }
     
 }

@@ -47,7 +47,7 @@
 
 
 
-             <a href="{{ url('/catalog/edit/' . $movie->id) }}" class="btn btn-warning"> Editar</a>
+            <a href="{{ url('/catalog/edit/' . $movie->id) }}" class="btn btn-warning"> Editar</a>
 
             <form action="{{action('CatalogController@deleteMovie', $movie->id)}}" 
             method="POST" style="display:inline">
